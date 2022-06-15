@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 import '../icons.dart';
 
 class BiggerDateWidget extends StatefulWidget {
@@ -9,16 +8,9 @@ class BiggerDateWidget extends StatefulWidget {
 }
 
 class _BiggerDateWidgetState extends State<BiggerDateWidget> {
-  TextEditingController dateinput = TextEditingController();
-
-  //text editing controller for text field
-  @override
-  void initState() {
-    dateinput.text = "";
-    //set the initial value of text field
-    super.initState();
-  }
-
+  final _controllerDay = TextEditingController();
+  final _controllerMonth = TextEditingController();
+  final _controllerYear = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,7 +27,7 @@ class _BiggerDateWidgetState extends State<BiggerDateWidget> {
             borderRadius: BorderRadius.circular(30),
           ),
           child: TextField(
-            keyboardType: TextInputType.datetime,
+            keyboardType: TextInputType.number,
             // textAlign: TextAlign.center,
             decoration: InputDecoration(
                 border: InputBorder.none,
@@ -56,7 +48,7 @@ class _BiggerDateWidgetState extends State<BiggerDateWidget> {
             borderRadius: BorderRadius.circular(30),
           ),
           child: TextField(
-            keyboardType: TextInputType.datetime,
+            keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
             decoration: InputDecoration(
                 border: InputBorder.none,
@@ -77,7 +69,7 @@ class _BiggerDateWidgetState extends State<BiggerDateWidget> {
             borderRadius: BorderRadius.circular(30),
           ),
           child: TextField(
-            keyboardType: TextInputType.datetime,
+            keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
             decoration: InputDecoration(
                 border: InputBorder.none,
