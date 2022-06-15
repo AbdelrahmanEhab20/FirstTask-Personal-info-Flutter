@@ -20,7 +20,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  RegExp regex = new RegExp('[a-zA-Z]');
+  RegExp regex = RegExp(r'^[a-z A-Z]+$');
   final _controllerFirstName = TextEditingController();
   final _controllerLastName = TextEditingController();
   String errorMessageFirst = '';
@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
     final textFirst = _controllerFirstName.value.text;
     if (regex.hasMatch(textFirst) == false || textFirst.isEmpty) {
       setState(() {
-        errorMessageFirst = 'Enter A Valid First Name Required';
+        errorMessageFirst = '* Enter A Valid First Name , Required';
       });
     } else {
       setState(() {
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     final textLast = _controllerLastName.value.text;
     if (regex.hasMatch(textLast) == false || textLast.isEmpty) {
       setState(() {
-        errorMessageLast = 'Enter A Valid Last Name Required';
+        errorMessageLast = '* Enter A Valid Last Name , Required';
       });
     } else {
       setState(() {
@@ -54,9 +54,29 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  // Function Print FirstName
+  void printFirstName() {
+    final textFirst = _controllerFirstName.value.text;
+    print('FirstName:' + textFirst);
+  }
+
+  // Function Print FirstName
+  void printLastName() {
+    final textLast = _controllerLastName.value.text;
+    print('LastName:' + textLast);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData(
+      //   // fontFamily: 'Avenir LT Std',
+      //   textButtonTheme: TextButtonThemeData(
+      //     style: TextButton.styleFrom(
+      //       primary: Color(0xFF757575),
+      //     ),
+      //   ),
+      // ),
       debugShowCheckedModeBanner: false,
       title: 'Task-One',
       //Start Of The Page before Splitting Widgets
@@ -92,6 +112,7 @@ class _MyAppState extends State<MyApp> {
                   errorMesseage: errorMessageFirst,
                   customChild: TextField(
                     // onEditingComplete: () => _errorLastText(),
+                    onEditingComplete: () => printFirstName(),
                     onChanged: ((value) => testingOnChangeFirstName()),
                     controller: _controllerFirstName,
                     decoration: InputDecoration(
@@ -102,20 +123,19 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 if (errorMessageFirst != '')
-                  Text(errorMessageFirst,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: Colors.red,
-                      )),
-                // _errorFirstText != null
-                //      Text(
-                //         _errorFirstText!,
-                //       )
-                //     : Text('data'),
+                  Container(
+                    margin: EdgeInsets.only(left: 0, right: 110),
+                    child: Text(errorMessageFirst,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.red,
+                        )),
+                  ),
                 SizedBox(height: 15),
                 BuildTextFieldContainer(
                   errorMesseage: errorMessageLast,
                   customChild: TextField(
+                    onEditingComplete: () => printLastName(),
                     onChanged: ((value) => testingOnChangeLastName()),
                     controller: _controllerLastName,
                     decoration: InputDecoration(
@@ -126,15 +146,14 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 if (errorMessageLast != '')
-                  Text(errorMessageLast,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: Colors.red,
-                      )),
-                // Text(
-                //   _errorFirstText!,
-                //   style: TextStyle(color: Colors.red),
-                // ),
+                  Container(
+                    margin: EdgeInsets.only(left: 0, right: 110),
+                    child: Text(errorMessageLast,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.red,
+                        )),
+                  ),
                 SizedBox(height: 15),
                 // File Date in separated structure Widgets --> Wrapping the values
                 BiggerDateWidget(),
@@ -170,6 +189,7 @@ class BuildTextFieldContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return errorMesseage != ''
         ? Container(
             margin: EdgeInsets.symmetric(vertical: 5),

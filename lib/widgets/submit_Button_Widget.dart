@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class SubmitButtonDone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       // color: Color(0xFF161B45),
       margin: EdgeInsets.symmetric(vertical: 5),

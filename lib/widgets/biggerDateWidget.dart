@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 import '../icons.dart';
 
 class BiggerDateWidget extends StatefulWidget {
@@ -20,6 +21,7 @@ class _BiggerDateWidgetState extends State<BiggerDateWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -27,7 +29,7 @@ class _BiggerDateWidgetState extends State<BiggerDateWidget> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(horizontal: 10),
-          width: 110,
+          width: size.width * 0.30,
           decoration: BoxDecoration(
             border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
             borderRadius: BorderRadius.circular(30),
@@ -48,7 +50,7 @@ class _BiggerDateWidgetState extends State<BiggerDateWidget> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(horizontal: 10),
-          width: 110,
+          width: size.width * 0.29,
           decoration: BoxDecoration(
             border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
             borderRadius: BorderRadius.circular(30),
@@ -69,7 +71,7 @@ class _BiggerDateWidgetState extends State<BiggerDateWidget> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(horizontal: 10),
-          width: 110,
+          width: size.width * 0.29,
           decoration: BoxDecoration(
             border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
             borderRadius: BorderRadius.circular(30),

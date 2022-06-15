@@ -6,12 +6,13 @@ import '../icons.dart';
 class ProfilePicUpload extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     final String addVectorIcon = 'assets/icons/Vector.svg';
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
       padding: EdgeInsets.symmetric(horizontal: 8),
-      width: 345,
-      height: 90,
+      width: size.width * 0.9,
+      height: size.height * 0.12,
       decoration: BoxDecoration(
         border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
         borderRadius: BorderRadius.circular(70),

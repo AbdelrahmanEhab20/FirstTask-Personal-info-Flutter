@@ -9,7 +9,9 @@ class MediumCountryWidget extends StatefulWidget {
 }
 
 class _MediumCountryWidgetState extends State<MediumCountryWidget> {
-  //List Items of States
+  //selected value default
+  String selectedValue = "Cairo";
+  // List of States
   List<DropdownMenuItem<String>> get statesList {
     List<DropdownMenuItem<String>> menuItems = [
       DropdownMenuItem(child: Text("Cairo"), value: "Cairo"),
@@ -21,11 +23,10 @@ class _MediumCountryWidgetState extends State<MediumCountryWidget> {
     return menuItems;
   }
 
-  String selectedValue = "Cairo";
-
   @override
   Widget build(BuildContext context) {
     final String dropDownIcon = 'assets/icons/dropDown.svg';
+    Size size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -33,7 +34,7 @@ class _MediumCountryWidgetState extends State<MediumCountryWidget> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(horizontal: 8),
-          width: 170,
+          width: size.width * 0.44,
           decoration: BoxDecoration(
             border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
             borderRadius: BorderRadius.circular(30),
@@ -54,13 +55,13 @@ class _MediumCountryWidgetState extends State<MediumCountryWidget> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(horizontal: 10),
-          width: 170,
+          width: size.width * 0.44,
           decoration: BoxDecoration(
             border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
             borderRadius: BorderRadius.circular(30),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(CustomIcons.state_icon, size: 16, color: Color(0xFF757575)),
               DropdownButton(
@@ -74,6 +75,7 @@ class _MediumCountryWidgetState extends State<MediumCountryWidget> {
                 onChanged: (String? newValue) {
                   setState(() {
                     selectedValue = newValue!;
+                    print("Your State : " + selectedValue);
                   });
                 },
               ),
