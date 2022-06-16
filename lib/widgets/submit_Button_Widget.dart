@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SubmitButtonDone extends StatelessWidget {
+class SubmitButtonDone extends StatefulWidget {
+  final Function submitInfo;
+
+  SubmitButtonDone(this.submitInfo);
+
+  @override
+  State<SubmitButtonDone> createState() => _SubmitButtonDoneState();
+}
+
+class _SubmitButtonDoneState extends State<SubmitButtonDone> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -16,7 +25,7 @@ class SubmitButtonDone extends StatelessWidget {
         borderRadius: BorderRadius.circular(30.5),
       ),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () => widget.submitInfo(context),
         child: Text(
           'DONE',
           style: TextStyle(

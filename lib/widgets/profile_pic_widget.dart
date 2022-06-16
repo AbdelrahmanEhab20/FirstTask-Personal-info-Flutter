@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
+// import 'dart:async';
+// import 'dart:io';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:image_picker/image_picker.dart';
 
 import '../icons.dart';
+import 'imageClass.dart';
 
-class ProfilePicUpload extends StatelessWidget {
+class ProfilePicUpload extends StatefulWidget {
+  @override
+  State<ProfilePicUpload> createState() => _ProfilePicUploadState();
+}
+
+enum ImageSourceType { gallery, camera }
+
+class _ProfilePicUploadState extends State<ProfilePicUpload> {
+  void _handleURLButtonPress(BuildContext context, var type) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => ImageFromGalleryEx(type)));
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,13 +37,18 @@ class ProfilePicUpload extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 35,
-              child: SvgPicture.asset(
-                addVectorIcon,
-                color: Color.fromARGB(255, 102, 100, 100),
+          InkWell(
+            onTap: () {
+              _handleURLButtonPress(context, ImageSourceType.gallery);
+            },
+            child: Container(
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 35,
+                child: SvgPicture.asset(
+                  addVectorIcon,
+                  color: Color.fromARGB(255, 102, 100, 100),
+                ),
               ),
             ),
           ),
