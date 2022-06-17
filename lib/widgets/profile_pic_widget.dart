@@ -16,6 +16,7 @@ class ProfilePicUpload extends StatefulWidget {
 enum ImageSourceType { gallery, camera }
 
 class _ProfilePicUploadState extends State<ProfilePicUpload> {
+  // Method to call the image class and it's properties to start dealing with images
   void _handleURLButtonPress(BuildContext context, var type) {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => ImageFromGalleryEx(type)));

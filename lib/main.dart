@@ -19,8 +19,22 @@ class MyApp extends StatefulWidget {
   String chooseMale = '';
   String chooseFemale = '';
   String CheckGenderResult = '';
-  Color fillContainerMale = Color.fromRGBO(247, 247, 247, 1);
-  Color fillContainerFemale = Color.fromRGBO(247, 247, 247, 1);
+  Gradient fillContainerMale = LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [
+      Color(0xFFFF),
+      Color(0xFFFF),
+    ],
+  );
+  Gradient fillContainerFemale = LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [
+      Color(0xFFFF),
+      Color(0xFFFF),
+    ],
+  );
   /******************************** */
   // For firstName and LastName
   RegExp regex = RegExp(r'^[a-z A-Z]+$');
@@ -106,8 +120,22 @@ class _MyAppState extends State<MyApp> {
         widget.chooseFemale = '';
         widget.chooseMale = 'Male';
         widget.CheckGenderResult = widget.chooseMale;
-        widget.fillContainerMale = Color(0xFF25D7FB);
-        widget.fillContainerFemale = Color.fromRGBO(247, 247, 247, 1);
+        widget.fillContainerMale = LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xFF25D7FB),
+            Color(0xFFDF8FEE),
+          ],
+        );
+        widget.fillContainerFemale = LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color.fromARGB(255, 255, 255, 255),
+            Color.fromARGB(255, 255, 255, 255),
+          ],
+        );
       }
     });
     print('Male:' + widget.chooseMale);
@@ -121,8 +149,22 @@ class _MyAppState extends State<MyApp> {
         widget.chooseMale = '';
         widget.chooseFemale = 'Female';
         widget.CheckGenderResult = widget.chooseFemale;
-        widget.fillContainerFemale = Color(0xFFDF8FEE);
-        widget.fillContainerMale = Color.fromRGBO(247, 247, 247, 1);
+        widget.fillContainerFemale = LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xFF25D7FB),
+            Color(0xFFDF8FEE),
+          ],
+        );
+        widget.fillContainerMale = LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xFFFF),
+            Color(0xFFFF),
+          ],
+        );
       }
     });
     print('Male:' + widget.chooseMale);
@@ -135,8 +177,24 @@ class _MyAppState extends State<MyApp> {
       widget.chooseMale = '';
       widget.chooseFemale = '';
       widget.CheckGenderResult = '';
-      widget.fillContainerMale = Color.fromRGBO(247, 247, 247, 1);
-      widget.fillContainerFemale = Color.fromRGBO(247, 247, 247, 1);
+      widget.fillContainerMale = LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [
+          Color(0xFFFF),
+          Color(0xFFFF),
+        ],
+      );
+      ;
+      widget.fillContainerFemale = LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [
+          Color(0xFFFF),
+          Color(0xFFFF),
+        ],
+      );
+      ;
       print('Male:' + widget.chooseMale);
       print('Female:' + widget.chooseFemale);
       print('ResGender:' + widget.CheckGenderResult);
@@ -356,7 +414,9 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class BuildTextFieldContainer extends StatelessWidget {
+bool focus = false;
+
+class BuildTextFieldContainer extends StatefulWidget {
   const BuildTextFieldContainer(
       {Key? key, this.customChild, required this.errorMesseage})
       : super(key: key);
@@ -365,29 +425,36 @@ class BuildTextFieldContainer extends StatelessWidget {
   final String errorMesseage;
 
   @override
+  State<BuildTextFieldContainer> createState() =>
+      _BuildTextFieldContainerState();
+}
+
+class _BuildTextFieldContainerState extends State<BuildTextFieldContainer> {
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    return errorMesseage != ''
-        ? Container(
-            margin: EdgeInsets.symmetric(vertical: 5),
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            width: size.width * .9,
-            decoration: BoxDecoration(
-              border: Border.all(color: Color.fromARGB(255, 254, 4, 4)),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: customChild,
-          )
-        : Container(
-            margin: EdgeInsets.symmetric(vertical: 5),
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            width: size.width * .9,
-            decoration: BoxDecoration(
-              border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: customChild,
-          );
+    //On Focus Variable Check
+    return InkWell(
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        width: size.width * .9,
+        decoration: BoxDecoration(
+          border: Border.all(
+              color: widget.errorMesseage != ''
+                  ? Color.fromARGB(255, 254, 4, 4)
+                  : focus
+                      ? Color.fromARGB(157, 13, 160, 25)
+                      : Color.fromARGB(255, 191, 187, 187)),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: widget.customChild,
+      ),
+      onTap: () async {
+        setState(() {
+          focus = !focus;
+        });
+      },
+    );
   }
 }

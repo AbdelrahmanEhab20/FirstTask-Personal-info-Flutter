@@ -18,10 +18,11 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
   void testingOnChangeDay() {
     String dayValue = widget._controllerDay.value.text;
 
-    if (dayValue.isEmpty) {
+    if (dayValue.isEmpty || dayValue == '') {
       setState(() {
         widget.errorMessageDate = '*This Field is Required';
       });
+      return;
     }
 
     if (!(1 <= int.parse(dayValue) && 31 >= int.parse(dayValue))) {
@@ -46,10 +47,11 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
   void testingOnChangeMonth() {
     String monthValue = widget._controllerMonth.value.text;
 
-    if (monthValue.isEmpty) {
+    if (monthValue.isEmpty || monthValue == '') {
       setState(() {
         widget.errorMessageDate = '*This Field is Required';
       });
+      return;
     }
     if (!(1 <= int.parse(monthValue) && 12 >= int.parse(monthValue))) {
       setState(() {
@@ -73,10 +75,11 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
   void testingOnChangeYear() {
     String yearValue = widget._controllerYear.value.text;
 
-    if (yearValue.isEmpty) {
+    if (yearValue.isEmpty || yearValue == '') {
       setState(() {
         widget.errorMessageDate = '*This Field is Required';
       });
+      return;
     }
     if (!(int.parse(yearValue) <= 2004 && int.parse(yearValue) >= 1945)) {
       setState(() {
@@ -137,7 +140,10 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               width: size.width * 0.30,
               decoration: BoxDecoration(
-                border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
+                border: Border.all(
+                    color: (!widget.errorMessageDate.isEmpty)
+                        ? Color.fromARGB(255, 231, 5, 5)
+                        : Color(0xFF757575)),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: TextField(
@@ -149,7 +155,10 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     icon: Icon(CustomIcons.date_icon,
-                        size: 18, color: Color(0xFF757575)),
+                        size: 18,
+                        color: (!widget.errorMessageDate.isEmpty)
+                            ? Color.fromARGB(255, 231, 5, 5)
+                            : Color(0xFF757575)),
                     hintText: 'Day*'),
               ),
             ),
@@ -161,7 +170,10 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               width: size.width * 0.29,
               decoration: BoxDecoration(
-                border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
+                border: Border.all(
+                    color: (!widget.errorMessageDate.isEmpty)
+                        ? Color.fromARGB(255, 231, 5, 5)
+                        : Color(0xFF757575)),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: TextField(
@@ -185,7 +197,10 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               width: size.width * 0.29,
               decoration: BoxDecoration(
-                border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
+                border: Border.all(
+                    color: (!widget.errorMessageDate.isEmpty)
+                        ? Color.fromARGB(255, 231, 5, 5)
+                        : Color(0xFF757575)),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: TextField(

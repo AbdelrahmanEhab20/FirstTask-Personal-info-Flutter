@@ -10,8 +10,8 @@ class biggerGenderWidget extends StatefulWidget {
   Function ChangeColorContainerMale;
   Function ChangeColorContainerFemale;
   Function ChangeColorContainerBoth;
-  Color fillContainerMale;
-  Color fillContainerFemale;
+  Gradient fillContainerMale;
+  Gradient fillContainerFemale;
   biggerGenderWidget(
       this.chooseFemale,
       this.chooseMale,
@@ -75,7 +75,7 @@ class _biggerGenderWidgetState extends State<biggerGenderWidget> {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 width: size.width * 0.29,
                 decoration: BoxDecoration(
-                  color: widget.fillContainerMale,
+                  gradient: widget.fillContainerMale,
                   border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -106,7 +106,7 @@ class _biggerGenderWidgetState extends State<biggerGenderWidget> {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 width: size.width * 0.29,
                 decoration: BoxDecoration(
-                  color: widget.fillContainerFemale,
+                  gradient: widget.fillContainerFemale,
                   border: Border.all(color: Color.fromARGB(255, 191, 187, 187)),
                   borderRadius: BorderRadius.circular(30),
                 ),

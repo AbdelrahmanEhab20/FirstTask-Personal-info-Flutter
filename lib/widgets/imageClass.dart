@@ -32,9 +32,14 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(type == ImageSourceType.camera
-              ? "Image from Camera"
-              : "Image from Gallery")),
+        backgroundColor: Color.fromARGB(255, 166, 166, 166),
+        elevation: 0,
+        title: Text(
+          ' 🧑‍💻Upload Your Photo📷',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       body: Column(
         children: <Widget>[
           SizedBox(
