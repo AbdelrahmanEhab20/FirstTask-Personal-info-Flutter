@@ -13,6 +13,8 @@ class BiggerDateWidget extends StatefulWidget {
   State<BiggerDateWidget> createState() => BiggerDateWidgetState();
 }
 
+bool focus = false;
+
 class BiggerDateWidgetState extends State<BiggerDateWidget> {
   //Validate Entering Day
   void testingOnChangeDay() {

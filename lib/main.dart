@@ -254,8 +254,8 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Color(0xFFF7F7F7),
           elevation: 0,
           title: Image.asset(
-            'assets/images/logo_stract.png',
-            scale: 0.85,
+            'assets/images/LogoPixelFrame.png',
+            width: 160,
           ),
         ),
         body: SingleChildScrollView(
@@ -434,7 +434,7 @@ class _BuildTextFieldContainerState extends State<BuildTextFieldContainer> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     //On Focus Variable Check
-    return InkWell(
+    return GestureDetector(
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5),
         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -444,7 +444,7 @@ class _BuildTextFieldContainerState extends State<BuildTextFieldContainer> {
               color: widget.errorMesseage != ''
                   ? Color.fromARGB(255, 254, 4, 4)
                   : focus
-                      ? Color.fromARGB(157, 13, 160, 25)
+                      ? Color(0xFF25D7FB)
                       : Color.fromARGB(255, 191, 187, 187)),
           borderRadius: BorderRadius.circular(30),
         ),
