@@ -145,7 +145,7 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
                 border: Border.all(
                     color: (!widget.errorMessageDate.isEmpty)
                         ? Color.fromARGB(255, 231, 5, 5)
-                        : Color(0xFF757575)),
+                        : Color.fromARGB(255, 191, 187, 187)),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: TextField(
@@ -175,7 +175,7 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
                 border: Border.all(
                     color: (!widget.errorMessageDate.isEmpty)
                         ? Color.fromARGB(255, 231, 5, 5)
-                        : Color(0xFF757575)),
+                        : Color.fromARGB(255, 191, 187, 187)),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: TextField(
@@ -202,7 +202,7 @@ class BiggerDateWidgetState extends State<BiggerDateWidget> {
                 border: Border.all(
                     color: (!widget.errorMessageDate.isEmpty)
                         ? Color.fromARGB(255, 231, 5, 5)
-                        : Color(0xFF757575)),
+                        : Color.fromARGB(255, 191, 187, 187)),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: TextField(
